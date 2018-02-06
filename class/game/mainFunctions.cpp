@@ -1,4 +1,4 @@
-//#include"mainClasses.cpp"
+
 Name::Name()
 {
     userName="Unknown";
@@ -59,7 +59,7 @@ void Gameboard::Pos_Prom()
                break;
         
     }
-    switch (fourInDiag1())
+    /*switch (fourInDiag1())
     
     {   
         case 1:cout<<"Winner : X";
@@ -69,9 +69,9 @@ void Gameboard::Pos_Prom()
                three=1;
                break;
         
-    }
+    }*/
     
-    switch (fourInDiag2())
+    /*switch (fourInDiag2())
     
     {   
         case 1:cout<<"Winner : X";
@@ -81,7 +81,7 @@ void Gameboard::Pos_Prom()
                four=1;
                break;
         
-    }
+    }*/
     
     
    }
@@ -227,16 +227,18 @@ int Gameboard::fourInDiag1()
         int countx = 0;
         int counto = 0;
         for(int j=0;j<4; j++)
-        {
-            if(gameSpace[i][i]=='x')
+        {	while(i==j)
+        	{
+            if(gameSpace[i][j]=='x')
             {
                 countx++;
                 
             }
-            if(gameSpace[i][i]=='o')
+            if(gameSpace[i][j]=='o')
             {
                 counto++;
                 
+            }
             }
         }
         if(countx == 4)

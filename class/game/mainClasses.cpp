@@ -1,6 +1,6 @@
 #include<iostream>
 #include<iomanip>
-//#include"mainFunctions.cpp"
+
 using namespace std;
 class Name
 {string userName;
