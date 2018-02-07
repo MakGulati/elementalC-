@@ -36,52 +36,57 @@ void Gameboard::Pos_Prom()
     cout<<"Position value x or o\n";
     cin>>pos_val;
     setGameSpace(pos,pos_val);
+    printInfo();
     switch (fourInRow())
     
     {   
-        case 1:{cout<<"Winner : X";
+        case 1:{cout<<"Winner : X  ";
                one=1;
                break;}
-        case 2:{cout<<"Winner : O";
+        case 2:{cout<<"Winner : O  ";
                one=1;
                break;}
+        default:break;       
         
     }
     
     switch (fourInCol())
     
     {   
-        case 1:cout<<"Winner : X";
+        case 1:cout<<"Winner : X  ";
                two=1;
                break;
-        case 2:cout<<"Winner : O";
+        case 2:cout<<"Winner : O  ";
                two=1;
                break;
+        default:break;       
         
     }
-    /*switch (fourInDiag1())
+    switch (fourInDiag1())
     
     {   
-        case 1:cout<<"Winner : X";
+        case 1:cout<<"Winner : X  ";
                three=1;
                break;
-        case 2:cout<<"Winner : O";
+        case 2:cout<<"Winner : O  ";
                three=1;
                break;
+        default:break;       
         
-    }*/
+    }
     
-    /*switch (fourInDiag2())
+    switch (fourInDiag2())
     
     {   
-        case 1:cout<<"Winner : X";
+        case 1:cout<<"Winner : X  ";
                four=1;
                break;
-        case 2:cout<<"Winner : O";
+        case 2:cout<<"Winner : O  ";
                four=1;
                break;
+        default:break;       
         
-    }*/
+    }
     
     
    }
@@ -155,7 +160,7 @@ void Gameboard::setGameSpace(int rc,char value)
                col=3;
                break;       
     }
-    gameSpace[row][col] = value;
+     gameSpace[row][col] = value;
 }
 
 char Gameboard::getGameSpace(int row,int column)
@@ -164,12 +169,12 @@ char Gameboard::getGameSpace(int row,int column)
 }
 
 int Gameboard::fourInRow()
-{
+{	int countx = 0;
+    int counto = 0;
     
     for(int i=0;i<4; i++)
     {
-        int countx = 0;
-        int counto = 0;
+        
         for(int j=0;j<4; j++)
         {
             if(gameSpace[i][j]=='x')
@@ -192,12 +197,12 @@ int Gameboard::fourInRow()
 }
 
 int Gameboard::fourInCol()
-{
+{		int countx = 0;
+        int counto = 0;
     
     for(int j=0;j<4; j++)
     {
-        int countx = 0;
-        int counto = 0;
+        
         for(int i=0;i<4; i++)
         {
             if(gameSpace[i][j]=='x')
@@ -222,57 +227,66 @@ int Gameboard::fourInCol()
 //Diag1
 int Gameboard::fourInDiag1()
 {
+	int countx = 0;
+    int counto = 0;
     for(int i=0;i<4; i++)
     {
-        int countx = 0;
-        int counto = 0;
+        
         for(int j=0;j<4; j++)
-        {	while(i==j)
+        {	if(i==j)
         	{
             if(gameSpace[i][j]=='x')
             {
-                countx++;
+                countx+=1;
+                //cout<<countx;
+                if(countx == 4)
+                	{return 1;}
                 
             }
             if(gameSpace[i][j]=='o')
             {
-                counto++;
+                counto+=1;
+                if(counto == 4)
+        			{return 2;}
                 
             }
             }
         }
-        if(countx == 4)
-            return 1;
-        if(counto == 4)
-            return 2;    
+            
     }
+    
+    
     return 0;
 }
 //Diag2
 int Gameboard::fourInDiag2()
-{
+{	int countx = 0;
+    int counto = 0;
     for(int i=0;i<4; i++)
     {
-        int countx = 0;
-        int counto = 0;
+        
         for(int j=0;j<4; j ++)
-        {   while((i+j)==3)
+        {   if((i+j)==3)
             {if(gameSpace[i][j]=='x')
             {
-                countx++;
+                countx+=1;
+                if(countx == 4)
+            		{return 1;	
+            		}
                 
             }
             if(gameSpace[i][j]=='o')
             {
-                counto++;
+                counto+=1;
+                //cout<<counto;
+                if(counto == 4)
+            		{return 2;}
                 
             }
             }
         }
-        if(countx == 4)
-            return 1;
-        if(counto == 4)
-            return 2;    
+        
+            
     }
     return 0;
 }
