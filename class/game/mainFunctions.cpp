@@ -303,3 +303,9 @@ void Gameboard::printInfo()
         cout<<"\n"; 
     }
 }
+
+
+ Gameboard::~Gameboard()
+ {
+ 	cout<<"done";
+ }

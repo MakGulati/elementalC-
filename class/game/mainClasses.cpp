@@ -27,6 +27,6 @@ public:
     int fourInCol();
     int fourInDiag1();
     int fourInDiag2();
-    
     void printInfo();
+    ~Gameboard();
 };
